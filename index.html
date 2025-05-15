@@ -15,7 +15,19 @@
             <h1>The Odin Library</h1>
         </header>
         <div class="Book_container"></div>
-        <button>Add New Book</button>
+        <dialog class="newbookdialogue">
+            <form action="">
+                <label for="form_title">Title : </label>
+                <input type="text" id="form_title" name="form_title">
+                <label for="form_author">Author :</label>
+                <input type="text" id="form_author" name="form_author">
+                <label for="form_pages">No, of Pages :</label>
+                <input type="number" id="form_pages" name="form_pages">
+                <label for="form_status">Tick the checkbox if you read the book</label>
+                <input type="checkbox" id="form_status" name="form_status">
+            </form>
+        </dialog>
+        <button class="add_new_btn">Add New Book</button>
     </div>
 </body>
 

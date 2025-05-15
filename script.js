@@ -54,3 +54,11 @@ function displayBooks() {
 }
 
 displayBooks();
+
+/* Add new book */
+
+let add_new_btn = document.querySelector(".add_new_btn");
+let newbookdialogue = document.querySelector(".newbookdialogue");
+add_new_btn.addEventListener("click", () => {
+    newbookdialogue.showModal();
+});
