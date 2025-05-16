@@ -17,17 +17,28 @@
         <div class="Book_container"></div>
         <dialog class="newbookdialogue">
             <form action="">
-                <label for="form_title">Title : </label>
-                <input type="text" id="form_title" name="form_title">
-                <label for="form_author">Author :</label>
-                <input type="text" id="form_author" name="form_author">
-                <label for="form_pages">No, of Pages :</label>
-                <input type="number" id="form_pages" name="form_pages">
-                <label for="form_status">Tick the checkbox if you read the book</label>
-                <input type="checkbox" id="form_status" name="form_status">
+                <p>
+                    <label for="form_title">Title : </label>
+                    <input type="text" id="form_title" name="form_title">
+                </p>
+                <p>
+                    <label for="form_author">Author :</label>
+                    <input type="text" id="form_author" name="form_author">
+                </p>
+                <p>
+                    <label for="form_pages">No, of Pages :</label>
+                    <input type="number" id="form_pages" name="form_pages">
+                </p>
+                <p>
+                    <label for="form_status">Tick the checkbox if you read the book</label>
+                    <input type="checkbox" id="form_status" name="form_status">
+                </p>
+                <button type="submit" id="addbutton" value="default">Add</button>
+                <button value="cancel" formmethod="dialog">close</button>
             </form>
         </dialog>
         <button class="add_new_btn">Add New Book</button>
+        <output></output>
     </div>
 </body>
 

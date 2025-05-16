@@ -50,15 +50,63 @@ function displayBooks() {
 
         book_div.classList.add("book_div");
         book_container.appendChild(book_div);
+
+        const rem_btn = document.createElement("button");
+        rem_btn.innerText = "Remove";
+        rem_btn.setAttribute("id", item.id);
+        book_div.appendChild(rem_btn);
+
+        rem_btn.addEventListener("click", () => {
+            console.log(rem_btn.id);
+            myLibrary.splice(myLibrary.findIndex((i) => i.id === rem_btn.id), 1);
+            book_container.innerHTML = "";
+            displayBooks()
+        })
     }
 }
 
 displayBooks();
 
 /* Add new book */
-
+let form = document.querySelector("form");
 let add_new_btn = document.querySelector(".add_new_btn");
 let newbookdialogue = document.querySelector(".newbookdialogue");
+let addbutton = document.querySelector("#addbutton");
+let output = document.querySelector("output");
+
+let form_title = document.getElementById("form_title");
+let form_author = document.getElementById("form_author");
+let form_pages = document.getElementById("form_pages");
+let form_status = document.getElementById("form_status");
+
+
+
+
 add_new_btn.addEventListener("click", () => {
     newbookdialogue.showModal();
 });
+
+// newbookdialogue.addEventListener("close", (e) => {
+//     if (newbookdialogue.returnValue == "") {
+//         output.value = "no return value";
+//     }
+//     else {
+//         output.value = newbookdialogue.returnValue;
+//     }
+// });
+
+addbutton.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (form_title.value != "") {
+        newbookdialogue.close();
+        // output.innerText = form_title.value + " " + form_status.checked;
+
+        addBookToLibrary(form_title.value, form_author.value, form_pages.value, form_status.checked);
+        console.log(myLibrary);
+        book_container.innerHTML = "";
+        displayBooks()
+        form.reset();
+    }
+    else
+        newbookdialogue.close();
+})
