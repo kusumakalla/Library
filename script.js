@@ -9,6 +9,11 @@ function Book(title, author, pages, read_or_not) {
         let read = read_or_not ? "read" : "not read yet";
         return this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
     }
+
+}
+
+Book.prototype.toggle_status = function () {
+    this.read_or_not = !(this.read_or_not);
 }
 
 let theHobbit = new Book("theHobbit", "J.R.R. Tolkien", 295, false);
@@ -59,6 +64,20 @@ function displayBooks() {
         rem_btn.addEventListener("click", () => {
             console.log(rem_btn.id);
             myLibrary.splice(myLibrary.findIndex((i) => i.id === rem_btn.id), 1);
+            book_container.innerHTML = "";
+            displayBooks()
+        })
+
+        const status_btn = document.createElement("button");
+        status_btn.innerText = "Toggle Status";
+        status_btn.setAttribute("id", item.id);
+        book_div.appendChild(status_btn);
+
+
+        status_btn.addEventListener("click", () => {
+            let index = myLibrary.findIndex((i) => i.id === status_btn.id);
+            console.log(index);
+            myLibrary[index].toggle_status();
             book_container.innerHTML = "";
             displayBooks()
         })
