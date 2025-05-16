@@ -33,7 +33,7 @@ let book_container = document.querySelector(".Book_container");
 function displayBooks() {
     for (const item of myLibrary) {
         const book_div = document.createElement("div");
-        const title = document.createElement("h4")
+        const title = document.createElement("h3")
         title.innerText = "Title : " + item.title;
         title.classList.add("title");
         book_div.appendChild(title);
@@ -49,7 +49,8 @@ function displayBooks() {
         book_div.appendChild(pages);
 
         const status = document.createElement("p")
-        status.innerText = item.read_or_not ? "read" : "Not read yet"
+        let final_status = item.read_or_not ? "read" : "Not read yet"
+        status.innerText = "Status : " + final_status;
         status.classList.add("status");
         book_div.appendChild(status);
 
@@ -58,6 +59,7 @@ function displayBooks() {
 
         const rem_btn = document.createElement("button");
         rem_btn.innerText = "Remove";
+        rem_btn.classList.add("card_btn")
         rem_btn.setAttribute("id", item.id);
         book_div.appendChild(rem_btn);
 
@@ -70,6 +72,7 @@ function displayBooks() {
 
         const status_btn = document.createElement("button");
         status_btn.innerText = "Toggle Status";
+        status_btn.classList.add("card_btn")
         status_btn.setAttribute("id", item.id);
         book_div.appendChild(status_btn);
 
@@ -105,14 +108,9 @@ add_new_btn.addEventListener("click", () => {
     newbookdialogue.showModal();
 });
 
-// newbookdialogue.addEventListener("close", (e) => {
-//     if (newbookdialogue.returnValue == "") {
-//         output.value = "no return value";
-//     }
-//     else {
-//         output.value = newbookdialogue.returnValue;
-//     }
-// });
+newbookdialogue.addEventListener("close", () => {
+    form.reset();
+});
 
 addbutton.addEventListener("click", (event) => {
     event.preventDefault();
