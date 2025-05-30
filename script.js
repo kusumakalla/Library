@@ -1,20 +1,25 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read_or_not) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read_or_not = read_or_not;
-    this.info = function () {
-        let read = read_or_not ? "read" : "not read yet";
+class Book {
+    // (title, author, pages, read_or_not) 
+    constructor(title, author, pages, read_or_not) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read_or_not = read_or_not;
+    }
+
+    info() {
+        let read = this.read_or_not ? "read" : "not read yet";
         return this.title + " by " + this.author + ", " + this.pages + " pages, " + read;
+    }
+
+    toggle_status() {
+        this.read_or_not = !(this.read_or_not);
     }
 
 }
 
-Book.prototype.toggle_status = function () {
-    this.read_or_not = !(this.read_or_not);
-}
 
 let theHobbit = new Book("theHobbit", "J.R.R. Tolkien", 295, false);
 console.log(theHobbit.info());

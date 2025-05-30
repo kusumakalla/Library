@@ -23,6 +23,7 @@ header {
 .Book_container {
     padding: 5% 10%;
     display: flex;
+    flex-wrap: wrap;
     /* grid-template-columns: repeat(3, 1fr); */
     gap: 5em;
     justify-content: center;
