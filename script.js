@@ -119,16 +119,16 @@ newbookdialogue.addEventListener("close", () => {
 
 addbutton.addEventListener("click", (event) => {
     event.preventDefault();
-    if (form_title.value != "") {
-        newbookdialogue.close();
-        // output.innerText = form_title.value + " " + form_status.checked;
-
-        addBookToLibrary(form_title.value, form_author.value, form_pages.value, form_status.checked);
-        console.log(myLibrary);
-        book_container.innerHTML = "";
-        displayBooks()
-        form.reset();
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
     }
-    else
-        newbookdialogue.close();
-})
+    // output.innerText = form_title.value + " " + form_status.checked;
+
+    addBookToLibrary(form_title.value, form_author.value, form_pages.value, form_status.checked);
+    book_container.innerHTML = "";
+    displayBooks()
+    form.reset();
+    newbookdialogue.close();
+}
+)
